@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE517BC12EB7734800BF438A /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BC02EB7734800BF438A /* TransactionType.swift */; };
+		CE517BC32EB773DE00BF438A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BC22EB773DE00BF438A /* Category.swift */; };
+		CE517BC52EB7746300BF438A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BC42EB7746300BF438A /* Transaction.swift */; };
+		CE517BC92EB7763900BF438A /* TransactionTypeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BC82EB7763900BF438A /* TransactionTypeDB.swift */; };
+		CE517BCB2EB778AE00BF438A /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BCA2EB778AE00BF438A /* Database.swift */; };
+		CE517BCD2EB7DF2700BF438A /* CustomTabar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BCC2EB7DF2700BF438A /* CustomTabar.swift */; };
+		CE517BCF2EBA6AA800BF438A /* CreateSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */; };
+		CE517BD12EBA6B1D00BF438A /* SpendingStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */; };
+		CE517BD32EBA6B7A00BF438A /* MontlySpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */; };
 		CE76560C2EB381EA009E4900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560B2EB381EA009E4900 /* AppDelegate.swift */; };
 		CE76560E2EB381EA009E4900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560D2EB381EA009E4900 /* SceneDelegate.swift */; };
 		CE7656102EB381EA009E4900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560F2EB381EA009E4900 /* ViewController.swift */; };
@@ -23,6 +32,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE517BC02EB7734800BF438A /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		CE517BC22EB773DE00BF438A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		CE517BC42EB7746300BF438A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		CE517BC82EB7763900BF438A /* TransactionTypeDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTypeDB.swift; sourceTree = "<group>"; };
+		CE517BCA2EB778AE00BF438A /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		CE517BCC2EB7DF2700BF438A /* CustomTabar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabar.swift; sourceTree = "<group>"; };
+		CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSpendingViewController.swift; sourceTree = "<group>"; };
+		CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingStatisticViewController.swift; sourceTree = "<group>"; };
+		CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySpendingViewController.swift; sourceTree = "<group>"; };
 		CE7656082EB381EA009E4900 /* Spending-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spending-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE76560B2EB381EA009E4900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE76560D2EB381EA009E4900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				CED0BD9A2EB609B3009866D1 /* FMDB */,
-				CED0BD922EB5D507009866D1 /* DAO */,
+				CED0BD922EB5D507009866D1 /* DAL */,
 				CE7F70342EB5CBDB00B980FC /* SystemFiles */,
 				CE7F70332EB5C9E200B980FC /* Controller */,
 				CE7F70322EB5C9D700B980FC /* Model */,
@@ -94,6 +112,9 @@
 		CE7F70322EB5C9D700B980FC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE517BC02EB7734800BF438A /* TransactionType.swift */,
+				CE517BC22EB773DE00BF438A /* Category.swift */,
+				CE517BC42EB7746300BF438A /* Transaction.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -102,6 +123,10 @@
 			isa = PBXGroup;
 			children = (
 				CE76560F2EB381EA009E4900 /* ViewController.swift */,
+				CE517BCC2EB7DF2700BF438A /* CustomTabar.swift */,
+				CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */,
+				CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */,
+				CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,11 +143,13 @@
 			name = SystemFiles;
 			sourceTree = "<group>";
 		};
-		CED0BD922EB5D507009866D1 /* DAO */ = {
+		CED0BD922EB5D507009866D1 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
+				CE517BC82EB7763900BF438A /* TransactionTypeDB.swift */,
+				CE517BCA2EB778AE00BF438A /* Database.swift */,
 			);
-			path = DAO;
+			path = DAL;
 			sourceTree = "<group>";
 		};
 		CED0BD942EB5D604009866D1 /* src */ = {
@@ -234,14 +261,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7656102EB381EA009E4900 /* ViewController.swift in Sources */,
+				CE517BD12EBA6B1D00BF438A /* SpendingStatisticViewController.swift in Sources */,
+				CE517BCD2EB7DF2700BF438A /* CustomTabar.swift in Sources */,
 				CED0BDA82EB60C1B009866D1 /* FMDatabasePool.m in Sources */,
+				CE517BC52EB7746300BF438A /* Transaction.swift in Sources */,
+				CE517BC92EB7763900BF438A /* TransactionTypeDB.swift in Sources */,
 				CED0BDA92EB60C1B009866D1 /* FMResultSet.m in Sources */,
 				CE76560C2EB381EA009E4900 /* AppDelegate.swift in Sources */,
 				CE76560E2EB381EA009E4900 /* SceneDelegate.swift in Sources */,
+				CE517BCF2EBA6AA800BF438A /* CreateSpendingViewController.swift in Sources */,
 				CED0BDA72EB60C1B009866D1 /* FMDatabase.m in Sources */,
+				CE517BC12EB7734800BF438A /* TransactionType.swift in Sources */,
 				CE7656162EB381EA009E4900 /* Spending_Manager.xcdatamodeld in Sources */,
 				CED0BDAA2EB60C1B009866D1 /* FMDatabaseAdditions.m in Sources */,
 				CED0BDAB2EB60C1B009866D1 /* FMDatabaseQueue.m in Sources */,
+				CE517BCB2EB778AE00BF438A /* Database.swift in Sources */,
+				CE517BC32EB773DE00BF438A /* Category.swift in Sources */,
+				CE517BD32EBA6B7A00BF438A /* MontlySpendingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
