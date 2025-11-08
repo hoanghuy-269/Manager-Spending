@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2D0F522EBD0FB700E32F6D /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = CE2D0F512EBD0FB700E32F6D /* DGCharts */; };
 		CE517BC12EB7734800BF438A /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BC02EB7734800BF438A /* TransactionType.swift */; };
 		CE517BC32EB773DE00BF438A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BC22EB773DE00BF438A /* Category.swift */; };
 		CE517BC52EB7746300BF438A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BC42EB7746300BF438A /* Transaction.swift */; };
@@ -79,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2D0F522EBD0FB700E32F6D /* DGCharts in Frameworks */,
 				CED0BD972EB5D900009866D1 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +234,9 @@
 			dependencies = (
 			);
 			name = "Spending-Manager";
+			packageProductDependencies = (
+				CE2D0F512EBD0FB700E32F6D /* DGCharts */,
+			);
 			productName = "Spending-Manager";
 			productReference = CE7656082EB381EA009E4900 /* Spending-Manager.app */;
 			productType = "com.apple.product-type.application";
@@ -261,6 +266,9 @@
 				Base,
 			);
 			mainGroup = CE7655FF2EB381EA009E4900;
+			packageReferences = (
+				CE2D0F502EBD0FB700E32F6D /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = CE7656092EB381EA009E4900 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -532,6 +540,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE2D0F502EBD0FB700E32F6D /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE2D0F512EBD0FB700E32F6D /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE2D0F502EBD0FB700E32F6D /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CE7656142EB381EA009E4900 /* Spending_Manager.xcdatamodeld */ = {
