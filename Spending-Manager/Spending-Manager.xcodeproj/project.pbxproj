@@ -16,6 +16,7 @@
 		CE517BCF2EBA6AA800BF438A /* CreateSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */; };
 		CE517BD12EBA6B1D00BF438A /* SpendingStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */; };
 		CE517BD32EBA6B7A00BF438A /* MontlySpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */; };
+		CE6682C62EBCEFE200D318D8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */; };
 		CE76560C2EB381EA009E4900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560B2EB381EA009E4900 /* AppDelegate.swift */; };
 		CE76560E2EB381EA009E4900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560D2EB381EA009E4900 /* SceneDelegate.swift */; };
 		CE7656102EB381EA009E4900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560F2EB381EA009E4900 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 		CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSpendingViewController.swift; sourceTree = "<group>"; };
 		CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingStatisticViewController.swift; sourceTree = "<group>"; };
 		CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySpendingViewController.swift; sourceTree = "<group>"; };
+		CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		CE7656082EB381EA009E4900 /* Spending-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spending-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE76560B2EB381EA009E4900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE76560D2EB381EA009E4900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE6682C42EBCEF8700D318D8 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
 		CE7655FF2EB381EA009E4900 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 		CE76560A2EB381EA009E4900 /* Spending-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				CE6682C42EBCEF8700D318D8 /* Controls */,
 				CED0BD9A2EB609B3009866D1 /* FMDB */,
 				CED0BD922EB5D507009866D1 /* DAL */,
 				CE7F70342EB5CBDB00B980FC /* SystemFiles */,
@@ -261,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7656102EB381EA009E4900 /* ViewController.swift in Sources */,
+				CE6682C62EBCEFE200D318D8 /* CustomSegmentedControl.swift in Sources */,
 				CE517BD12EBA6B1D00BF438A /* SpendingStatisticViewController.swift in Sources */,
 				CE517BCD2EB7DF2700BF438A /* CustomTabar.swift in Sources */,
 				CED0BDA82EB60C1B009866D1 /* FMDatabasePool.m in Sources */,
