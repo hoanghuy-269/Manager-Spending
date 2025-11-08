@@ -8,22 +8,35 @@
 import UIKit
 
 class CreateSpendingViewController: UIViewController {
-
+    
+    @IBOutlet weak var viewThuNhap: UIView!
+    
+    @IBOutlet weak var viewChiTieu: UIView!
+    
+    
+    @IBOutlet weak var segmented: CustomSegmentedControl!
+    
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        updateView(for: sender.selectedSegmentIndex)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateView(for: segmented.selectedSegmentIndex)
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateView(for index: Int) {
+        if index == 0 {
+            // Chuyen view chi tieu
+            viewChiTieu.isHidden = false
+            viewThuNhap.isHidden = true
+        } else {
+            // Chuyen view thu nhap
+            viewChiTieu.isHidden = true
+            viewThuNhap.isHidden = false
+        }
     }
-    */
-
 }

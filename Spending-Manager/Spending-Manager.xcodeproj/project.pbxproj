@@ -17,6 +17,7 @@
 		CE517BCF2EBA6AA800BF438A /* CreateSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */; };
 		CE517BD12EBA6B1D00BF438A /* SpendingStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */; };
 		CE517BD32EBA6B7A00BF438A /* MontlySpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */; };
+		CE6682C62EBCEFE200D318D8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */; };
 		CE76560C2EB381EA009E4900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560B2EB381EA009E4900 /* AppDelegate.swift */; };
 		CE76560E2EB381EA009E4900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560D2EB381EA009E4900 /* SceneDelegate.swift */; };
 		CE7656102EB381EA009E4900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560F2EB381EA009E4900 /* ViewController.swift */; };
@@ -30,6 +31,9 @@
 		CED0BDA92EB60C1B009866D1 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0BDA12EB60C1A009866D1 /* FMResultSet.m */; };
 		CED0BDAA2EB60C1B009866D1 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0BDA32EB60C1B009866D1 /* FMDatabaseAdditions.m */; };
 		CED0BDAB2EB60C1B009866D1 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0BDA62EB60C1B009866D1 /* FMDatabaseQueue.m */; };
+		CEEC61352EBF96250073FE1E /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC61342EBF96250073FE1E /* TransactionRepository.swift */; };
+		CEEC61372EBF963F0073FE1E /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC61362EBF963E0073FE1E /* DBManager.swift */; };
+		CEEC613B2EBF972B0073FE1E /* calendarscreeninterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC613A2EBF972B0073FE1E /* calendarscreeninterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,7 @@
 		CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSpendingViewController.swift; sourceTree = "<group>"; };
 		CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingStatisticViewController.swift; sourceTree = "<group>"; };
 		CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySpendingViewController.swift; sourceTree = "<group>"; };
+		CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		CE7656082EB381EA009E4900 /* Spending-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spending-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE76560B2EB381EA009E4900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE76560D2EB381EA009E4900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +70,9 @@
 		CED0BDA42EB60C1B009866D1 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
 		CED0BDA52EB60C1B009866D1 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
 		CED0BDA62EB60C1B009866D1 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		CEEC61342EBF96250073FE1E /* TransactionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
+		CEEC61362EBF963E0073FE1E /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		CEEC613A2EBF972B0073FE1E /* calendarscreeninterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calendarscreeninterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE6682C42EBCEF8700D318D8 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				CEEC61332EBF960F0073FE1E /* giaodien */,
+				CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
 		CE7655FF2EB381EA009E4900 = {
 			isa = PBXGroup;
 			children = (
@@ -100,25 +117,16 @@
 		CE76560A2EB381EA009E4900 /* Spending-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				CEEC61322EBF94990073FE1E /* Model */,
+				CE6682C42EBCEF8700D318D8 /* Controls */,
 				CED0BD9A2EB609B3009866D1 /* FMDB */,
 				CED0BD922EB5D507009866D1 /* DAL */,
 				CE7F70342EB5CBDB00B980FC /* SystemFiles */,
 				CE7F70332EB5C9E200B980FC /* Controller */,
-				CE7F70322EB5C9D700B980FC /* Model */,
 				CE7656112EB381EA009E4900 /* Main.storyboard */,
 				CE7656142EB381EA009E4900 /* Spending_Manager.xcdatamodeld */,
 			);
 			path = "Spending-Manager";
-			sourceTree = "<group>";
-		};
-		CE7F70322EB5C9D700B980FC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CE517BC02EB7734800BF438A /* TransactionType.swift */,
-				CE517BC22EB773DE00BF438A /* Category.swift */,
-				CE517BC42EB7746300BF438A /* Transaction.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		CE7F70332EB5C9E200B980FC /* Controller */ = {
@@ -188,6 +196,26 @@
 				CED0BD942EB5D604009866D1 /* src */,
 			);
 			path = FMDB;
+			sourceTree = "<group>";
+		};
+		CEEC61322EBF94990073FE1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE517BC02EB7734800BF438A /* TransactionType.swift */,
+				CE517BC22EB773DE00BF438A /* Category.swift */,
+				CE517BC42EB7746300BF438A /* Transaction.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CEEC61332EBF960F0073FE1E /* giaodien */ = {
+			isa = PBXGroup;
+			children = (
+				CEEC613A2EBF972B0073FE1E /* calendarscreeninterface.swift */,
+				CEEC61362EBF963E0073FE1E /* DBManager.swift */,
+				CEEC61342EBF96250073FE1E /* TransactionRepository.swift */,
+			);
+			path = giaodien;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,8 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7656102EB381EA009E4900 /* ViewController.swift in Sources */,
+				CE6682C62EBCEFE200D318D8 /* CustomSegmentedControl.swift in Sources */,
 				CE517BD12EBA6B1D00BF438A /* SpendingStatisticViewController.swift in Sources */,
 				CE517BCD2EB7DF2700BF438A /* CustomTabar.swift in Sources */,
+				CEEC61352EBF96250073FE1E /* TransactionRepository.swift in Sources */,
+				CEEC613B2EBF972B0073FE1E /* calendarscreeninterface.swift in Sources */,
 				CED0BDA82EB60C1B009866D1 /* FMDatabasePool.m in Sources */,
 				CE517BC52EB7746300BF438A /* Transaction.swift in Sources */,
 				CE517BC92EB7763900BF438A /* TransactionTypeDB.swift in Sources */,
@@ -279,6 +310,7 @@
 				CE76560E2EB381EA009E4900 /* SceneDelegate.swift in Sources */,
 				CE517BCF2EBA6AA800BF438A /* CreateSpendingViewController.swift in Sources */,
 				CED0BDA72EB60C1B009866D1 /* FMDatabase.m in Sources */,
+				CEEC61372EBF963F0073FE1E /* DBManager.swift in Sources */,
 				CE517BC12EB7734800BF438A /* TransactionType.swift in Sources */,
 				CE7656162EB381EA009E4900 /* Spending_Manager.xcdatamodeld in Sources */,
 				CED0BDAA2EB60C1B009866D1 /* FMDatabaseAdditions.m in Sources */,
