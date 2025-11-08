@@ -16,7 +16,7 @@
 		CE517BCF2EBA6AA800BF438A /* CreateSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */; };
 		CE517BD12EBA6B1D00BF438A /* SpendingStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */; };
 		CE517BD32EBA6B7A00BF438A /* MontlySpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */; };
-		CE70045A2EBF422D00B1E19B /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7004592EBF422D00B1E19B /* TransactionRepository.swift */; };
+		CE6682C62EBCEFE200D318D8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */; };
 		CE76560C2EB381EA009E4900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560B2EB381EA009E4900 /* AppDelegate.swift */; };
 		CE76560E2EB381EA009E4900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560D2EB381EA009E4900 /* SceneDelegate.swift */; };
 		CE7656102EB381EA009E4900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76560F2EB381EA009E4900 /* ViewController.swift */; };
@@ -24,7 +24,6 @@
 		CE7656162EB381EA009E4900 /* Spending_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE7656142EB381EA009E4900 /* Spending_Manager.xcdatamodeld */; };
 		CE7656182EB381F1009E4900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7656172EB381F1009E4900 /* Assets.xcassets */; };
 		CE76561B2EB381F1009E4900 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7656192EB381F1009E4900 /* LaunchScreen.storyboard */; };
-		CE85B4B02EBCCBCA0050211D /* calendarscreeninterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85B4AF2EBCCBCA0050211D /* calendarscreeninterface.swift */; };
 		CED0BD972EB5D900009866D1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CED0BD962EB5D900009866D1 /* libsqlite3.tbd */; };
 		CED0BDA72EB60C1B009866D1 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0BD9D2EB60C1A009866D1 /* FMDatabase.m */; };
 		CED0BDA82EB60C1B009866D1 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0BD9E2EB60C1A009866D1 /* FMDatabasePool.m */; };
@@ -43,7 +42,7 @@
 		CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSpendingViewController.swift; sourceTree = "<group>"; };
 		CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingStatisticViewController.swift; sourceTree = "<group>"; };
 		CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySpendingViewController.swift; sourceTree = "<group>"; };
-		CE7004592EBF422D00B1E19B /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
+		CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		CE7656082EB381EA009E4900 /* Spending-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spending-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE76560B2EB381EA009E4900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE76560D2EB381EA009E4900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +52,6 @@
 		CE7656172EB381F1009E4900 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE76561A2EB381F1009E4900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE76561C2EB381F1009E4900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE85B4AF2EBCCBCA0050211D /* calendarscreeninterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarscreeninterface.swift; sourceTree = "<group>"; };
 		CED0BD962EB5D900009866D1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CED0BD992EB609A0009866D1 /* SpendingManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpendingManager-Bridging-Header.h"; sourceTree = "<group>"; };
 		CED0BD9B2EB60C19009866D1 /* Spending-Manager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spending-Manager-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -82,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE6682C42EBCEF8700D318D8 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				CE6682C52EBCEFE200D318D8 /* CustomSegmentedControl.swift */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
 		CE7655FF2EB381EA009E4900 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +108,7 @@
 		CE76560A2EB381EA009E4900 /* Spending-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				CE6682C42EBCEF8700D318D8 /* Controls */,
 				CED0BD9A2EB609B3009866D1 /* FMDB */,
 				CED0BD922EB5D507009866D1 /* DAL */,
 				CE7F70342EB5CBDB00B980FC /* SystemFiles */,
@@ -119,7 +126,6 @@
 				CE517BC02EB7734800BF438A /* TransactionType.swift */,
 				CE517BC22EB773DE00BF438A /* Category.swift */,
 				CE517BC42EB7746300BF438A /* Transaction.swift */,
-				CE7004592EBF422D00B1E19B /* TransactionRepository.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -127,7 +133,6 @@
 		CE7F70332EB5C9E200B980FC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CE85B4A82EBCC5730050211D /* giaodien */,
 				CE76560F2EB381EA009E4900 /* ViewController.swift */,
 				CE517BCC2EB7DF2700BF438A /* CustomTabar.swift */,
 				CE517BCE2EBA6AA800BF438A /* CreateSpendingViewController.swift */,
@@ -147,14 +152,6 @@
 				CE76561C2EB381F1009E4900 /* Info.plist */,
 			);
 			name = SystemFiles;
-			sourceTree = "<group>";
-		};
-		CE85B4A82EBCC5730050211D /* giaodien */ = {
-			isa = PBXGroup;
-			children = (
-				CE85B4AF2EBCCBCA0050211D /* calendarscreeninterface.swift */,
-			);
-			path = giaodien;
 			sourceTree = "<group>";
 		};
 		CED0BD922EB5D507009866D1 /* DAL */ = {
@@ -275,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7656102EB381EA009E4900 /* ViewController.swift in Sources */,
+				CE6682C62EBCEFE200D318D8 /* CustomSegmentedControl.swift in Sources */,
 				CE517BD12EBA6B1D00BF438A /* SpendingStatisticViewController.swift in Sources */,
 				CE517BCD2EB7DF2700BF438A /* CustomTabar.swift in Sources */,
 				CED0BDA82EB60C1B009866D1 /* FMDatabasePool.m in Sources */,
@@ -282,7 +280,6 @@
 				CE517BC92EB7763900BF438A /* TransactionTypeDB.swift in Sources */,
 				CED0BDA92EB60C1B009866D1 /* FMResultSet.m in Sources */,
 				CE76560C2EB381EA009E4900 /* AppDelegate.swift in Sources */,
-				CE85B4B02EBCCBCA0050211D /* calendarscreeninterface.swift in Sources */,
 				CE76560E2EB381EA009E4900 /* SceneDelegate.swift in Sources */,
 				CE517BCF2EBA6AA800BF438A /* CreateSpendingViewController.swift in Sources */,
 				CED0BDA72EB60C1B009866D1 /* FMDatabase.m in Sources */,
@@ -290,7 +287,6 @@
 				CE7656162EB381EA009E4900 /* Spending_Manager.xcdatamodeld in Sources */,
 				CED0BDAA2EB60C1B009866D1 /* FMDatabaseAdditions.m in Sources */,
 				CED0BDAB2EB60C1B009866D1 /* FMDatabaseQueue.m in Sources */,
-				CE70045A2EBF422D00B1E19B /* TransactionRepository.swift in Sources */,
 				CE517BCB2EB778AE00BF438A /* Database.swift in Sources */,
 				CE517BC32EB773DE00BF438A /* Category.swift in Sources */,
 				CE517BD32EBA6B7A00BF438A /* MontlySpendingViewController.swift in Sources */,
