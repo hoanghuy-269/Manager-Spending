@@ -42,5 +42,14 @@ extension AppDatabase {
             }
             return result
         }
+    func insertDefaultTransactionTypes() {
+        let existing = getAllTransactionTypes()
+        if existing.isEmpty {
+            let expense = TransactionType(id: nil, name: "Chi tiêu")
+            let income = TransactionType(id: nil, name: "Thu nhập")
+            _ = insertTransactionType(expense)
+            _ = insertTransactionType(income)
+        }
+    }
 }
 

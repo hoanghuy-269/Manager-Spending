@@ -6,11 +6,17 @@
 //
 
 import Foundation
-class TransactionType{
-    var id : Int?
-    var name : String
+
+enum TransactionTypeId: Int {
+    case chiTieu = 1
+    case thuNhap = 2
+}
+
+class TransactionType {
+    var id: Int?
+    var name: String
     
-    init(id: Int?=nil, name: String) {
+    init(id: Int? = nil, name: String) {
         self.id = id
         self.name = name
     }
