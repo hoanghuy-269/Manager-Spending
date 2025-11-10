@@ -1,7 +1,7 @@
 import Foundation
-import SQLite3
 import UIKit
 
+// Tổng hợp cho 1 ngày
 struct DaySummary {
     let day: Int
     var income: Int
@@ -11,19 +11,7 @@ struct DaySummary {
 
 final class TransactionRepository {
 
-    private var db: OpaquePointer? { DBManager.shared.db }
-    private let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
-
-    @inline(__always)
-    private func bindText(_ stmt: OpaquePointer?, idx: Int32, _ value: String) {
-        value.withCString { sqlite3_bind_text(stmt, idx, $0, -1, SQLITE_TRANSIENT) }
-    }
-    @inline(__always) private func colInt(_ s: OpaquePointer?, _ i: Int32) -> Int { Int(sqlite3_column_int64(s, i)) }
-    @inline(__always) private func colDouble(_ s: OpaquePointer?, _ i: Int32) -> Double { sqlite3_column_double(s, i) }
-    @inline(__always) private func colText(_ s: OpaquePointer?, _ i: Int32) -> String {
-        guard let c = sqlite3_column_text(s, i) else { return "" }
-        return String(cString: c)
-    }
+    private let adb = AppDatabase.shared
 
     private var vnCalendar: Calendar {
         var c = Calendar(identifier: .gregorian)
@@ -32,126 +20,107 @@ final class TransactionRepository {
         return c
     }
 
-    // MARK: Theo NGÀY (đổ 3 ô + list)
+    // MARK: - Đọc THEO NGÀY: 3 ô + list
+    /// Giả định cột `Transactions.date` lưu **epoch giây** dưới dạng TEXT (hoặc số).
     func fetchDaySummary(date: Date) -> DaySummary {
-        guard let db = db else {
-            let d = vnCalendar.component(.day, from: date)
-            return DaySummary(day: d, income: 0, expense: 0, entries: [])
-        }
-
         let start = vnCalendar.startOfDay(for: date)
         let end   = vnCalendar.date(byAdding: .day, value: 1, to: start)!
         let sEpoch = Int(start.timeIntervalSince1970)
         let eEpoch = Int(end.timeIntervalSince1970)
         let dNum   = vnCalendar.component(.day, from: date)
 
-        let sql = """
-        SELECT t.amount,
-               t.transactionTypeId,      -- 1 = income, khác 1 = expense
-               c.name  AS categoryName,
-               c.icon  AS categoryIcon
-        FROM Transaction t
-        JOIN Category c ON c.id = t.categoryId
-        WHERE t.date >= ? AND t.date < ?
-        ORDER BY t.date ASC;
-        """
-
-        var stmt: OpaquePointer?
-        var income = 0, expense = 0
+        var income = 0
+        var expense = 0
         var list: [EntryItem] = []
 
-        if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            defer { sqlite3_finalize(stmt) }
-            sqlite3_bind_int64(stmt, 1, sqlite3_int64(sEpoch))
-            sqlite3_bind_int64(stmt, 2, sqlite3_int64(eEpoch))
+        guard adb.openDB(), let db = adb.db else {
+            return DaySummary(day: dNum, income: 0, expense: 0, entries: [])
+        }
+        defer { adb.closeDB() }
 
-            while sqlite3_step(stmt) == SQLITE_ROW {
-                let amount  = Int(colDouble(stmt, 0))
-                let typeId  = colInt(stmt, 1)
-                let catName = colText(stmt, 2).isEmpty ? "Giao dịch" : colText(stmt, 2)
-                let catIcon = colText(stmt, 3).isEmpty ? "square.grid.2x2" : colText(stmt, 3)
+        let t = adb.TRANSACTIONS_TABLE
+        let c = adb.CATEGORY_TABLE
+
+        // CAST(date AS INTEGER) để an toàn cho kiểu TEXT/NUMERIC
+        let sql = """
+        SELECT \(t).\(adb.TRANSACTIONS_AMOUNT)            AS amount,
+               \(t).\(adb.TRANSACTIONS_TYPE_ID)          AS typeId,
+               IFNULL(\(c).\(adb.CATEGORY_NAME), '')     AS catName,
+               IFNULL(\(c).\(adb.CATEGORY_ICON), '')     AS catIcon
+        FROM \(t)
+        LEFT JOIN \(c) ON \(c).\(adb.CATEGORY_ID) = \(t).\(adb.TRANSACTIONS_CATEGORY_ID)
+        WHERE CAST(\(t).\(adb.TRANSACTIONS_DATE) AS INTEGER) >= ? AND CAST(\(t).\(adb.TRANSACTIONS_DATE) AS INTEGER) < ?
+        ORDER BY CAST(\(t).\(adb.TRANSACTIONS_DATE) AS INTEGER) ASC;
+        """
+
+        if let rs = db.executeQuery(sql, withArgumentsIn: [sEpoch, eEpoch]) {
+            while rs.next() {
+                let amount  = Int(rs.double(forColumn: "amount"))
+                let typeId  = Int(rs.int(forColumn: "typeId"))
+                let catName = rs.string(forColumn: "catName") ?? "Giao dịch"
+                let catIcon = (rs.string(forColumn: "catIcon")?.isEmpty == false) ? rs.string(forColumn: "catIcon")! : iconForCategory(name: catName)
 
                 let kind: EntryItem.Kind = (typeId == 1) ? .income : .expense
                 let color: UIColor = colorForCategory(name: catName, fallback: (kind == .income ? .systemGreen : .systemOrange))
 
                 if kind == .income { income += amount } else { expense += amount }
-                list.append(EntryItem(iconName: iconForCategory(name: catName),
-                                      iconColor: color,
-                                      title: catName,
-                                      amount: amount,
-                                      kind: kind))
+                list.append(EntryItem(iconName: catIcon, iconColor: color, title: catName, amount: amount, kind: kind))
             }
-        } else {
-            print("Prepare day error:", String(cString: sqlite3_errmsg(db)))
+            rs.close()
         }
+
         return DaySummary(day: dNum, income: income, expense: expense, entries: list)
     }
 
-    // MARK: Markers THÁNG (đổ mini số trong ô lịch)
+    // MARK: - Markers THÁNG: mini số trong ô
     func fetchMonthMarkers(year: Int, month: Int) -> [Int: (income: Int, expense: Int)] {
-        guard let db = db else { return [:] }
         var result: [Int: (Int, Int)] = [:]
+        guard adb.openDB(), let db = adb.db else { return result }
+        defer { adb.closeDB() }
 
+        let t = adb.TRANSACTIONS_TABLE
+        // Dùng datetime(unixepoch) với CAST để an toàn kiểu TEXT
         let sql = """
-        SELECT CAST(strftime('%d', datetime(t.date, 'unixepoch')) AS INTEGER) AS d,
-               SUM(CASE WHEN t.transactionTypeId = 1 THEN t.amount ELSE 0 END) AS incomeSum,
-               SUM(CASE WHEN t.transactionTypeId <> 1 THEN t.amount ELSE 0 END) AS expenseSum
-        FROM Transaction t
-        WHERE strftime('%Y', datetime(t.date, 'unixepoch')) = ?
-          AND strftime('%m', datetime(t.date, 'unixepoch')) = ?
+        SELECT CAST(strftime('%d', datetime(CAST(\(t).\(adb.TRANSACTIONS_DATE) AS INTEGER), 'unixepoch')) AS INTEGER) AS d,
+               SUM(CASE WHEN \(t).\(adb.TRANSACTIONS_TYPE_ID) = 1 THEN \(t).\(adb.TRANSACTIONS_AMOUNT) ELSE 0 END) AS incomeSum,
+               SUM(CASE WHEN \(t).\(adb.TRANSACTIONS_TYPE_ID) <> 1 THEN \(t).\(adb.TRANSACTIONS_AMOUNT) ELSE 0 END) AS expenseSum
+        FROM \(t)
+        WHERE strftime('%Y', datetime(CAST(\(t).\(adb.TRANSACTIONS_DATE) AS INTEGER), 'unixepoch')) = ?
+          AND strftime('%m', datetime(CAST(\(t).\(adb.TRANSACTIONS_DATE) AS INTEGER), 'unixepoch')) = ?
         GROUP BY d
         ORDER BY d;
         """
 
-        var stmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            defer { sqlite3_finalize(stmt) }
-            let y = String(format: "%04d", year)
-            let m = String(format: "%02d", month)
-            bindText(stmt, idx: 1, y)
-            bindText(stmt, idx: 2, m)
+        let y = String(format: "%04d", year)
+        let m = String(format: "%02d", month)
 
-            while sqlite3_step(stmt) == SQLITE_ROW {
-                let d   = colInt(stmt, 0)
-                let inc = Int(colDouble(stmt, 1))
-                let exp = Int(colDouble(stmt, 2))
+        if let rs = db.executeQuery(sql, withArgumentsIn: [y, m]) {
+            while rs.next() {
+                let d   = Int(rs.int(forColumn: "d"))
+                let inc = Int(rs.double(forColumn: "incomeSum"))
+                let exp = Int(rs.double(forColumn: "expenseSum"))
                 result[d] = (inc, exp)
             }
-        } else {
-            print("Prepare month markers error:", String(cString: sqlite3_errmsg(db)))
+            rs.close()
         }
         return result
     }
 
-    // MARK: Icon/Color theo tên category (tuỳ biến)
+    // MARK: - Icon/Color gợi ý theo tên Category
     private func iconForCategory(name: String) -> String {
-        switch name.lowercased() {
-        case _ where name.localizedCaseInsensitiveContains("ăn"):
-            return "fork.knife.circle"
-        case _ where name.localizedCaseInsensitiveContains("hằng ngày"):
-            return "drop.circle"
-        case _ where name.localizedCaseInsensitiveContains("lương"):
-            return "wallet.pass"
-        case _ where name.localizedCaseInsensitiveContains("nhà"):
-            return "house.circle"
-        default:
-            return "square.grid.2x2"
-        }
+        let n = name.lowercased()
+        if n.contains("ăn") || n.contains("food") { return "fork.knife.circle" }
+        if n.contains("hằng ngày") || n.contains("daily") { return "drop.circle" }
+        if n.contains("lương") || n.contains("salary") { return "wallet.pass" }
+        if n.contains("nhà") || n.contains("rent") { return "house.circle" }
+        return "square.grid.2x2"
     }
-
     private func colorForCategory(name: String, fallback: UIColor) -> UIColor {
-        switch name.lowercased() {
-        case _ where name.localizedCaseInsensitiveContains("ăn"):
-            return .systemOrange
-        case _ where name.localizedCaseInsensitiveContains("hằng ngày"):
-            return .systemGreen
-        case _ where name.localizedCaseInsensitiveContains("lương"):
-            return .systemGreen
-        case _ where name.localizedCaseInsensitiveContains("nhà"):
-            return .systemPink
-        default:
-            return fallback
-        }
+        let n = name.lowercased()
+        if n.contains("ăn") || n.contains("food") { return .systemOrange }
+        if n.contains("hằng ngày") || n.contains("daily") { return .systemGreen }
+        if n.contains("lương") || n.contains("salary") { return .systemGreen }
+        if n.contains("nhà") || n.contains("rent") { return .systemPink }
+        return fallback
     }
 }
-
