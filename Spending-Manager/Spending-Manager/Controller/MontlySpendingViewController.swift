@@ -1,13 +1,9 @@
-import UIKit
+//
+//  MontlySpendingViewController.swift
+//  Spending-Manager
+//
 
-struct EntryItem {
-    enum Kind { case income, expense }
-    let iconName: String
-    let iconColor: UIColor
-    let title: String
-    let amount: Int
-    let kind: Kind
-}
+import UIKit
 
 final class MontlySpendingViewController: UIViewController,
     UICollectionViewDataSource, UICollectionViewDelegate,
@@ -21,9 +17,8 @@ final class MontlySpendingViewController: UIViewController,
     private var selectedDay: Int? = nil
 
     // Dữ liệu
-    private let repo = TransactionRepository()
-    private var monthData: [Int: DaySummary] = [:]   // day -> (income/expense mini)
-    private var entries: [EntryItem] = []            // list của ngày
+    private var monthMarkers: [Int: (income: Int, expense: Int)] = [:]
+    private var entries: [EntryItem] = []
 
     // MARK: Lifecycle
     override func loadView() {
@@ -39,14 +34,28 @@ final class MontlySpendingViewController: UIViewController,
         ui.tableView.dataSource = self
         ui.tableView.delegate = self
 
-        // Khởi tạo tháng (ví dụ 11/2025)
-        var dc = DateComponents(); dc.year = 2025; dc.month = 11; dc.day = 1
-        currentMonthDate = Calendar(identifier: .gregorian).date(from: dc) ?? Date()
+        // 💡 Seed dữ liệu mẫu khi DB trống (chỉ Debug)
+        #if DEBUG
+        if AppDatabase.shared.getAllTransactions().isEmpty {
+            AppDatabase.shared.insertSampleTransactions()
+        }
+        #endif
+
+        // Khởi đầu = tháng hiện tại
+        currentMonthDate = Date()
         rebuildDays(for: currentMonthDate)
 
-        // Chọn mặc định ngày 1 (nếu có)
-        if days.contains(where: { $0 == 1 }) { showDay(1) }
+        // Chọn mặc định = hôm nay (nếu thuộc tháng đang xem)
+        let today = Date()
+        let compMonth = vnCalendar.component(.month, from: today)
+        let compYear  = vnCalendar.component(.year,  from: today)
+        if vnCalendar.component(.month, from: currentMonthDate) == compMonth &&
+            vnCalendar.component(.year, from: currentMonthDate) == compYear {
+            let d = vnCalendar.component(.day, from: today)
+            if let _ = days.firstIndex(where: { $0 == d }) { showDay(d) }
+        }
 
+        // Điều hướng tháng
         ui.prevButton.addTarget(self, action: #selector(prevMonth), for: .touchUpInside)
         ui.nextButton.addTarget(self, action: #selector(nextMonth), for: .touchUpInside)
         ui.monthLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(monthTapped)))
@@ -92,52 +101,49 @@ final class MontlySpendingViewController: UIViewController,
         if rem != 0 { arr += Array(repeating: nil, count: 7 - rem) }
         days = arr
 
-        // markers tháng
+        // markers tháng từ DB
         let y = vnCalendar.component(.year, from: date)
         let m = vnCalendar.component(.month, from: date)
-        let markers = repo.fetchMonthMarkers(year: y, month: m)
-        monthData.removeAll()
-        for (d, mk) in markers {
-            monthData[d] = DaySummary(day: d, income: mk.income, expense: mk.expense, entries: [])
-        }
+        monthMarkers = AppDatabase.shared.getMonthMarkers(year: y, month: m)
 
         selectedDay = nil
         ui.setMonthTitle(titleMonth(date))
         ui.collectionView.reloadData()
 
+        // reset summary/list
         entries = []
         ui.setSummary(income: "0đ", expense: "0đ", total: "0đ")
         ui.setListHeader(left: "", right: "")
         ui.tableView.reloadData()
     }
 
-    // MARK: Đổ dữ liệu theo NGÀY
+    // MARK: Đổ dữ liệu NGÀY
     private func showDay(_ day: Int) {
         guard day >= 1 else { return }
         selectedDay = day
 
-        var c = vnCalendar.dateComponents([.year,.month], from: currentMonthDate)
-        c.day = day
-        let date = vnCalendar.date(from: c)!
+        var comps = vnCalendar.dateComponents([.year,.month], from: currentMonthDate)
+        comps.day = day
+        let date = vnCalendar.date(from: comps)!
 
-        let daySum = repo.fetchDaySummary(date: date)
+        // lấy tổng hợp 1 ngày từ DB
+        let sum = AppDatabase.shared.getDaySummary(for: date)
+        let total = sum.income - sum.expense
 
-        // 3 ô
-        let total = daySum.income - daySum.expense
-        ui.setSummary(income: money(daySum.income),
-                      expense: money(daySum.expense),
+        ui.setSummary(income: money(sum.income),
+                      expense: money(sum.expense),
                       total:   money(total))
 
-        // list
-        entries = daySum.entries
+        // list giao dịch ngày
+        entries = sum.entries
 
-        // header list
+        // header list (trái: dd/MM (Thứ...), phải: tổng)
         let df = DateFormatter(); df.locale = Locale(identifier: "vi_VN"); df.dateFormat = "dd/MM"
         ui.setListHeader(left: "\(df.string(from: date)) (\(weekdayShort(date)))",
                          right: money(total))
 
-        // cập nhật markers của ngày đã chọn
-        monthData[day] = DaySummary(day: day, income: daySum.income, expense: daySum.expense, entries: [])
+        // cập nhật markers (để mini số trong ô ngày phản ánh ngay khi chọn)
+        monthMarkers[day] = (sum.income, sum.expense)
 
         ui.tableView.reloadData()
         ui.collectionView.reloadData()
@@ -215,7 +221,7 @@ final class MontlySpendingViewController: UIViewController,
             cell.button.addTarget(self, action: #selector(dayTapped(_:)), for: .touchUpInside)
             cell.applySelection(d == selectedDay)
 
-            if let s = monthData[d] { cell.setMini(income: s.income, expense: s.expense) }
+            if let s = monthMarkers[d] { cell.setMini(income: s.income, expense: s.expense) }
             else { cell.setMini(income: nil, expense: nil) }
         } else {
             cell.button.isEnabled = false
@@ -228,7 +234,11 @@ final class MontlySpendingViewController: UIViewController,
 
     @objc private func dayTapped(_ sender: UIButton) {
         let newDay = sender.tag
+        var reload: [IndexPath] = []
+        if let old = selectedDay, let oldIdx = days.firstIndex(where: { $0 == old }) { reload.append(IndexPath(item: oldIdx, section: 0)) }
+        if let newIdx = days.firstIndex(where: { $0 == newDay }) { reload.append(IndexPath(item: newIdx, section: 0)) }
         showDay(newDay)
+        if reload.isEmpty { ui.collectionView.reloadData() } else { ui.collectionView.reloadItems(at: reload) }
     }
 
     // MARK: Table (list)
