@@ -246,7 +246,7 @@
             </objects>
             <point key="canvasLocation" x="2435.8778625954196" y="-1107.0422535211269"/>
         </scene>
-        <!--Thu Chi-->
+        <!--Create Spending View Controller-->
         <scene sceneID="NDM-ad-ZTq">
             <objects>
                 <viewController id="Q3w-VG-dgR" customClass="CreateSpendingViewController" customModule="Spending_Manager" sceneMemberID="viewController">
@@ -254,11 +254,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWO-H8-H7n">
-                                <rect key="frame" x="30" y="59" width="338" height="128"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lWO-H8-H7n">
+                                <rect key="frame" x="30" y="103" width="338" height="121"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Qb-ir-iym">
-                                        <rect key="frame" x="231" y="-21" width="107" height="130"/>
+                                        <rect key="frame" x="231" y="-21" width="107" height="86"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -279,7 +279,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BkD-nA-BQx">
-                                        <rect key="frame" x="-10" y="-21" width="110" height="130"/>
+                                        <rect key="frame" x="-11" y="-21" width="111" height="142"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -309,7 +309,6 @@
                                     <constraint firstItem="l9A-mW-pyo" firstAttribute="leading" secondItem="BkD-nA-BQx" secondAttribute="trailing" constant="9.3333333333333286" id="7c4-b7-dgL"/>
                                     <constraint firstItem="3Qb-ir-iym" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="l9A-mW-pyo" secondAttribute="trailing" constant="-13.666666666666657" id="Bbo-Eb-wn2"/>
                                     <constraint firstItem="l9A-mW-pyo" firstAttribute="leading" secondItem="lWO-H8-H7n" secondAttribute="leading" constant="109.66666666666666" id="CC7-GP-L4s"/>
-                                    <constraint firstItem="BkD-nA-BQx" firstAttribute="bottom" secondItem="3Qb-ir-iym" secondAttribute="bottom" id="Q7W-k7-Auf"/>
                                     <constraint firstItem="3Qb-ir-iym" firstAttribute="leading" secondItem="12C-6M-a8S" secondAttribute="trailing" constant="16.666666666666686" id="SVb-nV-ZRa"/>
                                     <constraint firstItem="3Qb-ir-iym" firstAttribute="leading" secondItem="l9A-mW-pyo" secondAttribute="trailing" constant="-13.666666666666657" id="UAS-Tq-kVY"/>
                                     <constraint firstItem="l9A-mW-pyo" firstAttribute="top" secondItem="12C-6M-a8S" secondAttribute="bottom" constant="5" id="VFB-qH-6in"/>
@@ -319,6 +318,7 @@
                                     <constraint firstItem="BkD-nA-BQx" firstAttribute="leading" secondItem="lWO-H8-H7n" secondAttribute="leading" id="gMg-Zl-qcQ"/>
                                     <constraint firstAttribute="bottom" secondItem="BkD-nA-BQx" secondAttribute="bottom" constant="19" id="iFg-Te-xlw"/>
                                     <constraint firstItem="12C-6M-a8S" firstAttribute="centerX" secondItem="l9A-mW-pyo" secondAttribute="centerX" id="tYd-3t-5lk"/>
+                                    <constraint firstItem="Hx6-a9-hsT" firstAttribute="top" secondItem="3Qb-ir-iym" secondAttribute="bottom" constant="3" id="u5P-e9-ZfF"/>
                                     <constraint firstAttribute="trailing" secondItem="3Qb-ir-iym" secondAttribute="trailing" id="vCD-aZ-lmE"/>
                                     <constraint firstItem="BkD-nA-BQx" firstAttribute="top" secondItem="3Qb-ir-iym" secondAttribute="top" id="xz9-kB-Ltw"/>
                                     <constraint firstItem="Hx6-a9-hsT" firstAttribute="leading" secondItem="lWO-H8-H7n" secondAttribute="leading" constant="19" id="zFr-G4-OeL"/>
@@ -330,7 +330,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nY3-Rh-feJ" customClass="Spending" customModule="Spending_Manager" customModuleProvider="target">
-                                <rect key="frame" x="9" y="164" width="374" height="545"/>
+                                <rect key="frame" x="9" y="214" width="374" height="503"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJH-UK-bnb">
@@ -355,7 +355,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Danh mục" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRH-1l-9P5">
-                                        <rect key="frame" x="34" y="168" width="62" height="16"/>
+                                        <rect key="frame" x="34" y="157" width="62" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -371,12 +371,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="SW5-RA-T8m">
-                                        <rect key="frame" x="178" y="29" width="129" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
-                                        <color key="tintColor" red="1" green="0.89087927759999996" blue="0.1778473733" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </datePicker>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vmx-ar-hl4">
                                         <rect key="frame" x="127" y="66" width="221" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -395,7 +389,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VN1-Oh-ZHc">
-                                        <rect key="frame" x="76" y="487" width="229" height="38"/>
+                                        <rect key="frame" x="71" y="449" width="229" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -405,9 +399,12 @@
                                             </backgroundConfiguration>
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="thuNhapButtonTapped:" destination="Q3w-VG-dgR" eventType="touchUpInside" id="mnS-9T-c2a"/>
+                                        </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cx4-9u-r0B">
-                                        <rect key="frame" x="15" y="192" width="340" height="270"/>
+                                        <rect key="frame" x="15" y="181" width="340" height="252"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="4" id="RSR-Up-EQg">
@@ -441,6 +438,12 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="SW5-RA-T8m">
+                                        <rect key="frame" x="150" y="15" width="144" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                        <color key="tintColor" red="1" green="0.89087927759999996" blue="0.1778473733" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" red="0.83105116752221986" green="0.77181824746995487" blue="0.47567578465447236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -450,7 +453,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yK-GZ-u5b" customClass="SpendingView" customModule="Spending_Manager" customModuleProvider="target">
-                                <rect key="frame" x="9" y="164" width="373" height="545"/>
+                                <rect key="frame" x="9" y="214" width="373" height="503"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngày:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaz-bh-D0C">
@@ -475,7 +478,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Danh mục" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRz-KC-YLx">
-                                        <rect key="frame" x="38" y="158" width="62" height="16"/>
+                                        <rect key="frame" x="34" y="147" width="62" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -493,15 +496,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="wXe-69-qln">
-                                        <rect key="frame" x="178" y="21" width="129" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.82533778089999998" green="1" blue="0.21661112339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </datePicker>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="amk-o5-dcJ">
                                         <rect key="frame" x="146" y="21" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FBp-oA-bmB">
                                         <rect key="frame" x="113" y="23" width="25" height="25"/>
@@ -513,20 +511,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmJ-Os-GcU">
-                                        <rect key="frame" x="79" y="489" width="214" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" red="1" green="0.95138180959999996" blue="0.66253711749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Nhập khoản Tiền chi">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                            </backgroundConfiguration>
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                                        </buttonConfiguration>
-                                    </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nnE-e2-qxG">
-                                        <rect key="frame" x="16" y="182" width="340" height="270"/>
+                                        <rect key="frame" x="16" y="171" width="340" height="270"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="4" id="tzJ-WN-pAX">
@@ -560,6 +546,26 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmJ-Os-GcU">
+                                        <rect key="frame" x="79" y="457" width="214" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="1" green="0.95138180959999996" blue="0.66253711749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Nhập khoản Tiền chi">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chiTieuButtonTapped:" destination="Q3w-VG-dgR" eventType="touchUpInside" id="etg-Eq-AUm"/>
+                                        </connections>
+                                    </button>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="wXe-69-qln">
+                                        <rect key="frame" x="127" y="0.0" width="164" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82533778089999998" green="1" blue="0.21661112339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.89087927762863373" blue="0.17784737334678902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -573,48 +579,48 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Uyv-iW-j8z" firstAttribute="trailing" secondItem="lWO-H8-H7n" secondAttribute="trailing" constant="25" id="2WP-6Z-1kJ"/>
-                            <constraint firstItem="Uyv-iW-j8z" firstAttribute="bottom" secondItem="lWO-H8-H7n" secondAttribute="bottom" constant="582" id="KO6-KS-EAK"/>
                             <constraint firstItem="lWO-H8-H7n" firstAttribute="leading" secondItem="Uyv-iW-j8z" secondAttribute="leading" constant="30" id="luo-kq-drs"/>
+                            <constraint firstItem="Uyv-iW-j8z" firstAttribute="bottom" secondItem="lWO-H8-H7n" secondAttribute="bottom" constant="499" id="ofa-fl-HwT"/>
                             <constraint firstItem="lWO-H8-H7n" firstAttribute="top" secondItem="Uyv-iW-j8z" secondAttribute="top" id="yhQ-0o-Sqh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Thu Chi" image="pencil.line" catalog="system" id="Bfd-Rq-eCZ"/>
+                    <navigationItem key="navigationItem" id="aKl-2O-jl0"/>
                     <connections>
+                        <outlet property="chiTieuButton" destination="dmJ-Os-GcU" id="Rf5-5P-H0f"/>
                         <outlet property="collectionChiTieu" destination="nnE-e2-qxG" id="2Cm-Gz-JHL"/>
                         <outlet property="collectionThuNhap" destination="Cx4-9u-r0B" id="j60-Uz-gnM"/>
+                        <outlet property="decreaseDayInCome" destination="wXy-it-s5t" id="O15-ge-DRc"/>
+                        <outlet property="decreaseDaySpending" destination="FBp-oA-bmB" id="T9K-dB-4lq"/>
+                        <outlet property="ghiChuChiTieu" destination="7mY-fF-APs" id="aaW-8c-wqs"/>
+                        <outlet property="ghiChuThuNhap" destination="hZy-ah-JoE" id="4xL-54-qTq"/>
+                        <outlet property="increaseDayInCome" destination="Ngg-xv-wTx" id="aai-zq-Zxi"/>
+                        <outlet property="increaseDaySpending" destination="IAJ-IM-Nop" id="Xp2-RR-SsW"/>
+                        <outlet property="ngayThemChiTieu" destination="wXe-69-qln" id="4w7-4r-T1C"/>
+                        <outlet property="ngayThemThuNhap" destination="SW5-RA-T8m" id="iSc-fA-vc4"/>
                         <outlet property="segmented" destination="Hx6-a9-hsT" id="hUz-pq-yqB"/>
+                        <outlet property="soDu" destination="l9A-mW-pyo" id="QPc-Dv-z5c"/>
+                        <outlet property="thuNhapButton" destination="VN1-Oh-ZHc" id="CuE-uo-kqG"/>
+                        <outlet property="tienChiTieu" destination="DYp-1z-AeG" id="Wja-go-QJG"/>
+                        <outlet property="tienThuNhap" destination="vmx-ar-hl4" id="Mnb-Mm-a7v"/>
                         <outlet property="viewChiTieu" destination="6yK-GZ-u5b" id="lGT-ZJ-s5n"/>
                         <outlet property="viewThuNhap" destination="nY3-Rh-feJ" id="g5J-Ik-EUx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kmg-Dc-eW5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2435.8778625954196" y="-306.33802816901408"/>
+            <point key="canvasLocation" x="3362.5954198473282" y="-306.33802816901408"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Spending Categories Table View Controller-->
         <scene sceneID="wOd-1L-YD7">
             <objects>
-                <tableViewController definesPresentationContext="YES" id="sAM-JK-oC8" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SpendingCategoriesTableViewController" definesPresentationContext="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sAM-JK-oC8" customClass="SpendingCategoriesTableViewController" customModule="Spending_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="W4g-Vc-xJy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="YyK-QM-vzu">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Danh Mục Chi Tiêu" id="5Lm-kT-BX3">
-                                    <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="GST-P4-1Rn">
-                                        <connections>
-                                            <segue destination="eV9-yT-J7P" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="S5I-S3-p5c"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="11" rowHeight="80" id="mZl-Rj-JiB">
-                                <rect key="frame" x="0.0" y="94" width="393" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="11" reuseIdentifier="SpendingTableViewCell" rowHeight="80" id="mZl-Rj-JiB" customClass="SpendingTableViewCell" customModule="Spending_Manager">
+                                <rect key="frame" x="0.0" y="50" width="393" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mZl-Rj-JiB" id="4NO-Cm-B4f">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
@@ -637,6 +643,10 @@
                                         <constraint firstItem="Lpz-YH-HpZ" firstAttribute="top" secondItem="4NO-Cm-B4f" secondAttribute="topMargin" constant="5" id="vwC-9L-NuB"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconCategory" destination="Lpz-YH-HpZ" id="ZKY-cr-0YM"/>
+                                    <outlet property="nameCategory" destination="scA-bk-ARp" id="fb8-HY-xOH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -644,15 +654,22 @@
                             <outlet property="delegate" destination="sAM-JK-oC8" id="h49-AY-sb6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="XAu-fW-KgD">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="PvL-zh-Q7i">
+                            <connections>
+                                <segue destination="eV9-yT-J7P" kind="presentation" id="amo-uO-8pE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeX-dX-NU0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3525.9541984732823" y="-655.63380281690149"/>
+            <point key="canvasLocation" x="5422" y="-675"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Spending View Controller-->
         <scene sceneID="xmQ-UZ-33M">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="eV9-yT-J7P" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" hidesBottomBarWhenPushed="YES" id="eV9-yT-J7P" customClass="AddSpendingViewController" customModule="Spending_Manager" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r1n-Je-FIa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -661,7 +678,7 @@
                                 <rect key="frame" x="46" y="160" width="300" height="321"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LzQ-b3-ntm">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LzQ-b3-ntm">
                                         <rect key="frame" x="49" y="52" width="200" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -688,6 +705,9 @@
                                                 <integer key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addCategoryTapped:" destination="eV9-yT-J7P" eventType="touchUpInside" id="0W9-vs-OwA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmd-YC-JSj">
                                         <rect key="frame" x="63" y="278" width="55" height="35"/>
@@ -701,6 +721,9 @@
                                                 <integer key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="eV9-yT-J7P" eventType="touchUpInside" id="uso-mE-4GD"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="THÊM DANH MỤC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pj4-aQ-upK">
                                         <rect key="frame" x="76" y="16" width="146" height="21"/>
@@ -717,7 +740,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="12"/>
@@ -726,12 +749,18 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hcb-ba-ZC4"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="addCategory" destination="ze9-Pn-Qio" id="inT-ly-pfc"/>
+                        <outlet property="cancelButton" destination="rmd-YC-JSj" id="QbF-V4-aZv"/>
+                        <outlet property="icon" destination="LzQ-b3-ntm" id="Hop-VV-9Wp"/>
+                        <outlet property="nameCategory" destination="QNp-DO-Wrb" id="1cf-HE-cSy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKh-J1-BQ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4470.9923664122134" y="-656.33802816901414"/>
+            <point key="canvasLocation" x="6486" y="-684"/>
         </scene>
         <!--Lịch-->
         <scene sceneID="Sad-lz-ZEt">
@@ -761,7 +790,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="8V9-ex-r8f"/>
-                        <segue destination="Q3w-VG-dgR" kind="relationship" relationship="viewControllers" id="GHo-hI-4Uk"/>
+                        <segue destination="ya1-UJ-BOz" kind="relationship" relationship="viewControllers" id="GHo-hI-4Uk"/>
                         <segue destination="an1-sw-hTY" kind="relationship" relationship="viewControllers" id="pX9-Af-kmu"/>
                     </connections>
                 </tabBarController>
@@ -769,30 +798,17 @@
             </objects>
             <point key="canvasLocation" x="1448" y="-4"/>
         </scene>
-        <!--Table View Controller-->
+        <!--In Come Categories Table View Controller-->
         <scene sceneID="MiD-4z-99K">
             <objects>
-                <tableViewController definesPresentationContext="YES" id="afV-gh-qb5" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="InComeCategoriesTableViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="afV-gh-qb5" customClass="InComeCategoriesTableViewController" customModule="Spending_Manager" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="baB-qb-fot">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="h0g-DD-vh4">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Danh Mục Thu Nhập" id="Tko-bZ-tKy">
-                                    <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="eJ5-dT-krR">
-                                        <connections>
-                                            <segue destination="3Rs-H9-oSy" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Dg6-Wx-DJl"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="11" rowHeight="80" id="Ud1-LZ-nDU">
-                                <rect key="frame" x="0.0" y="94" width="393" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="11" reuseIdentifier="InComeTableViewCell" rowHeight="80" id="Ud1-LZ-nDU" customClass="InComeTableViewCell" customModule="Spending_Manager" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ud1-LZ-nDU" id="Bpv-FT-kpE">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
@@ -815,6 +831,10 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="pMf-6n-Lpb" secondAttribute="bottom" constant="5" id="jhX-2m-axT"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconCategory" destination="pMf-6n-Lpb" id="LMn-CR-JC2"/>
+                                    <outlet property="nameCategory" destination="02X-wh-WAZ" id="pHa-rX-9Rq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -822,15 +842,22 @@
                             <outlet property="delegate" destination="afV-gh-qb5" id="Q9P-UE-zTi"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Qt1-e2-dUK">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="eJ5-dT-krR">
+                            <connections>
+                                <segue destination="3Rs-H9-oSy" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Dg6-Wx-DJl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAj-Qa-gba" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3526" y="156"/>
+            <point key="canvasLocation" x="5379.3893129770986" y="155.63380281690141"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Coming View Controller-->
         <scene sceneID="x6X-cn-dih">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="3Rs-H9-oSy" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" hidesBottomBarWhenPushed="YES" id="3Rs-H9-oSy" customClass="AddComingViewController" customModule="Spending_Manager" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lhA-Dw-J0C">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -839,7 +866,7 @@
                                 <rect key="frame" x="46" y="160" width="300" height="321"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSI-AE-9dV">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cSI-AE-9dV">
                                         <rect key="frame" x="49" y="52" width="200" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -866,6 +893,9 @@
                                                 <integer key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addCategoryTapped:" destination="3Rs-H9-oSy" eventType="touchUpInside" id="Wlv-lz-XxB"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwh-Gu-wmh">
                                         <rect key="frame" x="63" y="278" width="55" height="35"/>
@@ -879,6 +909,9 @@
                                                 <integer key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="3Rs-H9-oSy" eventType="touchUpInside" id="aQS-nf-bYU"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="THÊM DANH MỤC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7a-WR-AQH">
                                         <rect key="frame" x="76" y="16" width="146" height="21"/>
@@ -895,7 +928,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="12"/>
@@ -904,20 +937,82 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FUc-K0-4sO"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="addCate" destination="7F7-rG-Bmo" id="lE4-iy-PmO"/>
+                        <outlet property="cacel" destination="Vwh-Gu-wmh" id="5Jb-HU-zBO"/>
+                        <outlet property="iconImage" destination="cSI-AE-9dV" id="JPJ-aD-EEn"/>
+                        <outlet property="nameCategory" destination="46w-8d-eHh" id="gGX-jr-wfx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA2-4o-s2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4471" y="156"/>
+            <point key="canvasLocation" x="6322.900763358778" y="155.63380281690141"/>
+        </scene>
+        <!--Thu Chi-->
+        <scene sceneID="wPb-2M-crv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ya1-UJ-BOz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Thu Chi" image="pencil.line" catalog="system" id="Bfd-Rq-eCZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qN2-FQ-TYZ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q3w-VG-dgR" kind="relationship" relationship="rootViewController" id="7pD-wy-Cmu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fka-Og-4RZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2435.8778625954196" y="-306.33802816901408"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oiT-Bd-YPB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QSm-VI-ap7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="giC-tp-cPV">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sAM-JK-oC8" kind="relationship" relationship="rootViewController" id="VCx-aH-rpT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ugz-Sd-xem" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4356" y="-675"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ncu-Pp-APL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O1Q-Rx-jHJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lXc-DP-nuF">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="afV-gh-qb5" kind="relationship" relationship="rootViewController" id="yHH-YY-oHb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jdh-7L-b46" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4452.6717557251905" y="155.63380281690141"/>
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="95"/>
-        <image name="arrow.right" catalog="system" width="128" height="95"/>
-        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="arrow.left" catalog="system" width="32" height="32"/>
+        <image name="arrow.right" catalog="system" width="32" height="32"/>
+        <image name="calendar" catalog="system" width="32" height="32"/>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="cart" width="256" height="252"/>
-        <image name="chart.pie" catalog="system" width="128" height="123"/>
+        <image name="chart.pie" catalog="system" width="32" height="32"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="pencil.line" catalog="system" width="128" height="98"/>
@@ -940,9 +1035,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

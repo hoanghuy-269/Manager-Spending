@@ -33,14 +33,14 @@ final class MontlySpendingViewController: UIViewController,
         ui.collectionView.delegate = self
         ui.tableView.dataSource = self
         ui.tableView.delegate = self
-
+/*
         // 💡 Seed dữ liệu mẫu khi DB trống (chỉ Debug)
         #if DEBUG
         if AppDatabase.shared.getAllTransactions().isEmpty {
             AppDatabase.shared.insertSampleTransactions()
         }
         #endif
-
+*/
         // Khởi đầu = tháng hiện tại
         currentMonthDate = Date()
         rebuildDays(for: currentMonthDate)

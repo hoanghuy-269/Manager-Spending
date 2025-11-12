@@ -3,4 +3,130 @@
    uuid = "D28F50A8-FEEE-40B8-9B18-439E768C17AD"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1DE792A-1E8C-4855-A69C-DEFFB2C127D2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spending-Manager/Controller/CreateSpendingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C88FC44-E718-4F56-8AD6-E4627F76A9FB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spending-Manager/Controller/CreateSpendingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "CreateSpendingViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "9C88FC44-E718-4F56-8AD6-E4627F76A9FB - cbd65b5a1a5601cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spending_Manager.CreateSpendingViewController.ghiChuChiTieu.getter : Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "Spending-Manager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/Manager-Spending/Spending-Manager/Spending-Manager/Controller/CreateSpendingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "85">
+               </Location>
+               <Location
+                  uuid = "9C88FC44-E718-4F56-8AD6-E4627F76A9FB - 679231f82c8086f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spending_Manager.CreateSpendingViewController.ghiChuChiTieu.setter : Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "Spending-Manager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/Manager-Spending/Spending-Manager/Spending-Manager/Controller/CreateSpendingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "9C88FC44-E718-4F56-8AD6-E4627F76A9FB - 130bec76410fd2f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spending_Manager.CreateSpendingViewController.ghiChuChiTieu.modify : Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "Spending-Manager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/Manager-Spending/Spending-Manager/Spending-Manager/Controller/CreateSpendingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "9C88FC44-E718-4F56-8AD6-E4627F76A9FB - 42280cadc5ce757f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spending_Manager.CreateSpendingViewController.ghiChuChiTieu.modify : Swift.Optional&lt;__C.UITextField&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Spending-Manager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/Manager-Spending/Spending-Manager/Spending-Manager/Controller/CreateSpendingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "9C88FC44-E718-4F56-8AD6-E4627F76A9FB - 6825b719d42669ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spending_Manager.CreateSpendingViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Spending_Manager.CreateSpendingViewController"
+                  moduleName = "Spending-Manager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/Manager-Spending/Spending-Manager/Spending-Manager/Controller/CreateSpendingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "958">
+               </Location>
+               <Location
+                  uuid = "9C88FC44-E718-4F56-8AD6-E4627F76A9FB - 2c450a6de3fc83ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spending_Manager.CreateSpendingViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Spending_Manager.CreateSpendingViewController&gt;"
+                  moduleName = "Spending-Manager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/Manager-Spending/Spending-Manager/Spending-Manager/Controller/CreateSpendingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "915">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

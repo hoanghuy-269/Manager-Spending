@@ -60,15 +60,23 @@ class InComeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Configuration
     func configure(with category: Category) {
+        let db = AppDatabase.shared
         titleLabel.text = category.name
-        if let iconName = category.icon{
-            iconImageView.image = UIImage(named: iconName)
-        }else
-        {
-            iconImageView.image = nil
-        }
         
-    }
+        if let iconString = category.icon {
+                // Thử decode Base64 trước
+                if let imageData = Data(base64Encoded: iconString),
+                   let image = UIImage(data: imageData) {
+                    iconImageView.image = image
+                } else {
+                    // Nếu decode thất bại, coi như là SF Symbol
+                    iconImageView.image = UIImage(systemName: iconString)
+                }
+            } else {
+                iconImageView.image = UIImage(systemName: "photo")
+            }
+        }
+    
 
     // MARK: - Prepare for Reuse
     override func prepareForReuse() {
@@ -76,4 +84,10 @@ class InComeCollectionViewCell: UICollectionViewCell {
         titleLabel.text = nil
         iconImageView.image = nil
     }
+    
+    override var isSelected: Bool {
+            didSet {
+                contentView.backgroundColor = isSelected ? UIColor.systemYellow : UIColor.systemGray6
+            }
+        }
 }

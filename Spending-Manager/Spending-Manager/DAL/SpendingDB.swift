@@ -149,7 +149,7 @@ extension AppDatabase {
         }
         return list
     }
-    
+    /*
     // MARK: - Insert Sample Transactions
     func insertSampleTransactions() {
         let samples: [Transaction] = [
@@ -164,7 +164,7 @@ extension AppDatabase {
             _ = insertTransaction(t)
         }
         os_log("Sample transactions inserted successfully.")
-    }
+    }*/
 }
 
 // ====== BỔ SUNG: Helpers ngày giờ & API Lịch ======
@@ -273,7 +273,7 @@ extension AppDatabase {
                                     ? rs.string(forColumn: "catIcon")!
                                     : iconForCategory(catName)
 
-                    let kind: EntryItem.Kind = (typeId == 1) ? .income : .expense
+                    let kind: EntryItem.Kind = (typeId == 2) ? .income : .expense
                     let color: UIColor = colorForCategory(catName, fallback: (kind == .income ? .systemGreen : .systemOrange))
 
                     if kind == .income { income += amount } else { expense += amount }
@@ -286,7 +286,7 @@ extension AppDatabase {
         return DaySummary(day: day, income: income, expense: expense, entries: entries)
     }
 
-    private func iconForCategory(_ name: String) -> String {
+     func iconForCategory(_ name: String) -> String {
         let n = name.lowercased()
         if n.contains("ăn") || n.contains("food") { return "fork.knife.circle" }
         if n.contains("hằng ngày") || n.contains("daily") { return "drop.circle" }
@@ -294,7 +294,7 @@ extension AppDatabase {
         if n.contains("nhà") || n.contains("rent") { return "house.circle" }
         return "square.grid.2x2"
     }
-    private func colorForCategory(_ name: String, fallback: UIColor) -> UIColor {
+     func colorForCategory(_ name: String, fallback: UIColor) -> UIColor {
         let n = name.lowercased()
         if n.contains("ăn") || n.contains("food") { return .systemOrange }
         if n.contains("hằng ngày") || n.contains("daily") { return .systemGreen }
@@ -302,6 +302,11 @@ extension AppDatabase {
         if n.contains("nhà") || n.contains("rent") { return .systemPink }
         return fallback
     }
+     func colorForTransactionType(_ typeId: Int?) -> UIColor {
+            guard let typeId = typeId else { return .systemGray }
+            // Giả sử typeId = 1 là thu nhập, 2 là chi tiêu
+            return (typeId == 1) ? .systemGreen : .systemOrange
+        }
 }
 
 // MARK: - Markers theo THÁNG (mini Thu/Chi trong ô lịch)
@@ -314,8 +319,8 @@ extension AppDatabase {
 
             let sql = """
             SELECT CAST(strftime('%d', \(TRANSACTIONS_DATE)) AS INTEGER) AS d,
-                   SUM(CASE WHEN \(TRANSACTIONS_TYPE_ID) = 1 THEN \(TRANSACTIONS_AMOUNT) ELSE 0 END) AS incomeSum,
-                   SUM(CASE WHEN \(TRANSACTIONS_TYPE_ID) <> 1 THEN \(TRANSACTIONS_AMOUNT) ELSE 0 END) AS expenseSum
+                   SUM(CASE WHEN \(TRANSACTIONS_TYPE_ID) = 2 THEN \(TRANSACTIONS_AMOUNT) ELSE 0 END) AS incomeSum,
+                   SUM(CASE WHEN \(TRANSACTIONS_TYPE_ID) = 1 THEN \(TRANSACTIONS_AMOUNT) ELSE 0 END) AS expenseSum
             FROM \(TRANSACTIONS_TABLE)
             WHERE strftime('%Y', \(TRANSACTIONS_DATE)) = ?
               AND strftime('%m', \(TRANSACTIONS_DATE)) = ?
