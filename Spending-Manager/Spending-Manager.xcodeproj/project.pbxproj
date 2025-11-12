@@ -28,6 +28,8 @@
 		CE7656162EB381EA009E4900 /* Spending_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE7656142EB381EA009E4900 /* Spending_Manager.xcdatamodeld */; };
 		CE7656182EB381F1009E4900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7656172EB381F1009E4900 /* Assets.xcassets */; };
 		CE76561B2EB381F1009E4900 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7656192EB381F1009E4900 /* LaunchScreen.storyboard */; };
+		CE81FF532EC11142002A68EA /* transactionViewCrell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE81FF522EC11142002A68EA /* transactionViewCrell.swift */; };
+		CE9DCD842EC3377200393F3E /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DCD832EC3377200393F3E /* StatisticsViewController.swift */; };
 		CED0BD972EB5D900009866D1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CED0BD962EB5D900009866D1 /* libsqlite3.tbd */; };
 		CED0BDA72EB60C1B009866D1 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0BD9D2EB60C1A009866D1 /* FMDatabase.m */; };
 		CED0BDA82EB60C1B009866D1 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0BD9E2EB60C1A009866D1 /* FMDatabasePool.m */; };
@@ -63,6 +65,8 @@
 		CE7656172EB381F1009E4900 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE76561A2EB381F1009E4900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE76561C2EB381F1009E4900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE81FF522EC11142002A68EA /* transactionViewCrell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionViewCrell.swift; sourceTree = "<group>"; };
+		CE9DCD832EC3377200393F3E /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		CED0BD962EB5D900009866D1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CED0BD992EB609A0009866D1 /* SpendingManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpendingManager-Bridging-Header.h"; sourceTree = "<group>"; };
 		CED0BD9B2EB60C19009866D1 /* Spending-Manager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spending-Manager-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 		CE76560A2EB381EA009E4900 /* Spending-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				CE81FF4B2EC10AE8002A68EA /* Cells */,
 				CEEC61322EBF94990073FE1E /* Model */,
 				CE6682C42EBCEF8700D318D8 /* Controls */,
 				CED0BD9A2EB609B3009866D1 /* FMDB */,
@@ -147,6 +152,7 @@
 				CE517BD02EBA6B1D00BF438A /* SpendingStatisticViewController.swift */,
 				CE517BD22EBA6B7A00BF438A /* MontlySpendingViewController.swift */,
 				CEEC613E2EBFAB310073FE1E /* InComeCollectionViewCell.swift */,
+				CE9DCD832EC3377200393F3E /* StatisticsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -161,6 +167,14 @@
 				CE76561C2EB381F1009E4900 /* Info.plist */,
 			);
 			name = SystemFiles;
+			sourceTree = "<group>";
+		};
+		CE81FF4B2EC10AE8002A68EA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE81FF522EC11142002A68EA /* transactionViewCrell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		CED0BD922EB5D507009866D1 /* DAL */ = {
@@ -324,6 +338,7 @@
 				CE76560C2EB381EA009E4900 /* AppDelegate.swift in Sources */,
 				CEEC613F2EBFAB310073FE1E /* InComeCollectionViewCell.swift in Sources */,
 				CE76560E2EB381EA009E4900 /* SceneDelegate.swift in Sources */,
+				CE9DCD842EC3377200393F3E /* StatisticsViewController.swift in Sources */,
 				CE517BCF2EBA6AA800BF438A /* CreateSpendingViewController.swift in Sources */,
 				CED0BDA72EB60C1B009866D1 /* FMDatabase.m in Sources */,
 				CEEC61372EBF963F0073FE1E /* DBManager.swift in Sources */,
@@ -331,6 +346,7 @@
 				CE7656162EB381EA009E4900 /* Spending_Manager.xcdatamodeld in Sources */,
 				CED0BDAA2EB60C1B009866D1 /* FMDatabaseAdditions.m in Sources */,
 				CED0BDAB2EB60C1B009866D1 /* FMDatabaseQueue.m in Sources */,
+				CE81FF532EC11142002A68EA /* transactionViewCrell.swift in Sources */,
 				CE517BCB2EB778AE00BF438A /* Database.swift in Sources */,
 				CE517BC32EB773DE00BF438A /* Category.swift in Sources */,
 				CE517BD32EBA6B7A00BF438A /* MontlySpendingViewController.swift in Sources */,
