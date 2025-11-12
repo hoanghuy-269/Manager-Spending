@@ -96,48 +96,4 @@ class AppDatabase {
             closeDB()
         }
     }
-    func getCategoryName(by id: Int) -> String {
-        var name = "Danh mục \(id)"
-        if openDB() {
-            let sql = "SELECT \(CATEGORY_NAME) FROM \(CATEGORY_TABLE) WHERE \(CATEGORY_ID) = ? LIMIT 1"
-            if let rs = db!.executeQuery(sql, withArgumentsIn: [id]) {
-                if rs.next() {
-                    name = rs.string(forColumn: CATEGORY_NAME) ?? name
-                }
-                rs.close()
-            }
-            closeDB()
-        }
-        return name
-    }
-    
-    func getCategoryById(_ id: Int) -> Category? {
-        var category: Category?
-        
-        if openDB() {
-            let sql = """
-            SELECT \(CATEGORY_ID), \(CATEGORY_NAME), \(CATEGORY_TYPE_ID), \(CATEGORY_ICON)
-            FROM \(CATEGORY_TABLE)
-            WHERE \(CATEGORY_ID) = ?
-            LIMIT 1
-            """
-            
-            if let rs = db!.executeQuery(sql, withArgumentsIn: [id]) {
-                if rs.next() {
-                    let id = Int(rs.int(forColumn: CATEGORY_ID))
-                    let name = rs.string(forColumn: CATEGORY_NAME) ?? "Không rõ"
-                    let typeId = Int(rs.int(forColumn: CATEGORY_TYPE_ID))
-                    let icon = rs.string(forColumn: CATEGORY_ICON)
-                    
-                    category = Category(id: id, name: name, transactionTypeId: typeId, icon: icon)
-                }
-                rs.close()
-            }
-            closeDB()
-        }
-        
-        return category
-    }
-
-
 }

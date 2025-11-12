@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +20,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         db.insertDefaultTransactionTypes()
         db.insertDefaultSampleCategoriesIfNeeded()
         
+        let center = UNUserNotificationCenter.current()
+                center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                    print(granted ? "Đã cho phép thông báo" : "Người dùng từ chối thông báo")
+                }
+                center.delegate = self
+
+                // Lên lịch nhắc nhở
+                scheduleDailyReminder()
         return true
     }
+    func scheduleDailyReminder() {
+        let center = UNUserNotificationCenter.current()
+        
+        // Xóa lịch cũ (nếu có)
+        center.removeAllPendingNotificationRequests()
+        
+        // Tạo nội dung thông báo
+        let content = UNMutableNotificationContent()
+        content.title = "Nhắc nhở chi tiêu"
+        content.body = "Đừng quên thêm các khoản chi tiêu của bạn hôm nay nhé 💸"
+        content.sound = .default
+        
+        // Test nhanh sau 10 giây
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        
+        /*
+        var dateComponents = DateComponents()
+        dateComponents.hour = 8
+        dateComponents.minute = 0
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        */
+        
+        // Tạo request
+        let request = UNNotificationRequest(identifier: "daily_spending_reminder", content: content, trigger: trigger)
+        
+        // Thêm vào notification center
+        center.add(request) { error in
+            if let error = error {
+                print("Lỗi khi lên lịch thông báo: \(error.localizedDescription)")
+            } else {
+                print("Đã đặt nhắc nhở (test 10 giây)")
+            }
+        }
+    }
+
 
     // MARK: UISceneSession Lifecycle
 
@@ -82,4 +126,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    // Cho phép hiển thị khi app đang mở
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound])
+    }
+}
+
 
