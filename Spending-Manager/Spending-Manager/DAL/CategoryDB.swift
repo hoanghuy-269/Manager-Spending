@@ -16,15 +16,34 @@ extension AppDatabase {
     func insertCategory(_ category: Category) -> Bool {
         var ok = false
         if openDB() {
+            // Kiểm tra trùng tên
+            let checkSql = "SELECT COUNT(*) FROM \(CATEGORY_TABLE) WHERE \(CATEGORY_NAME) = ? AND \(TRANSACTIONS_TYPE_ID) = ?"
+            if let rs = db?.executeQuery(checkSql, withArgumentsIn: [category.name, category.transactionTypeId]) {
+                if rs.next() {
+                    let count = rs.int(forColumnIndex: 0)
+                    if count > 0 {
+                        // Đã tồn tại tên này -> không thêm
+                        print("Tên danh mục đã tồn tại: \(category.name)")
+                        rs.close()
+                        closeDB()
+                        return false
+                    }
+                }
+                rs.close()
+            }
+
+            // Nếu không trùng thì thêm mới
             let sql = "INSERT INTO \(CATEGORY_TABLE) (\(CATEGORY_NAME), \(TRANSACTIONS_TYPE_ID), \(CATEGORY_ICON)) VALUES (?, ?, ?)"
             if db!.executeUpdate(sql, withArgumentsIn: [category.name, category.transactionTypeId, category.icon ?? ""]) {
                 category.id = Int(db!.lastInsertRowId)
                 ok = true
             }
+
             closeDB()
         }
         return ok
     }
+
     
     // MARK: - Update
     func updateCategory(_ category: Category) -> Bool {
@@ -132,7 +151,7 @@ extension AppDatabase {
                     let cat = Category(id: 0, name: s.0, transactionTypeId: s.2, icon: s.1)
                     _ = insertCategory(cat)
                 }
-                print("✅ Inserted sample categories")
+                print("Inserted sample categories")
             } else {
                 print("ℹ️ Categories already exist — skip inserting samples")
                 
