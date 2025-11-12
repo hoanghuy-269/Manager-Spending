@@ -155,9 +155,9 @@ extension AppDatabase {
         let samples: [Transaction] = [
             Transaction(amount: 150000, categoryId: 1, transactionTypeId: 2, note: "Mua đồ ăn trưa", date: Date()),
             Transaction(amount: 500000, categoryId: 3, transactionTypeId: 2, note: "Thanh toán tiền điện", date: Date()),
-            Transaction(amount: 2000000, categoryId: 2, transactionTypeId: 1, note: "Nhận lương freelance", date: Date()),
+            Transaction(amount: 2000000, categoryId: 2, transactionTypeId: 2, note: "Nhận lương freelance", date: Date()),
             Transaction(amount: 100000, categoryId: 4, transactionTypeId: 2, note: "Uống cà phê", date: Date()),
-            Transaction(amount: 7500000, categoryId: 5, transactionTypeId: 1, note: "Nhận lương tháng 11", date: Date())
+            Transaction(amount: 7500000, categoryId: 5, transactionTypeId: 2, note: "Nhận lương tháng 11", date: Date())
         ]
         
         for t in samples {

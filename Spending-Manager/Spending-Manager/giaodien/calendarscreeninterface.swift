@@ -5,44 +5,60 @@
 
 import UIKit
 
+/// View thuần-code cho màn hình Lịch.
+/// Chịu trách nhiệm dựng UI (header, thanh tháng, thứ trong tuần, lưới lịch,
+/// 3 ô tổng hợp, danh sách giao dịch) và cung cấp vài API nhỏ để VC cập nhật.
 final class CalendarScreenInterface: UIView {
 
-    // MARK: - Expose to VC
-    let collectionView: UICollectionView
-    let tableView = UITableView(frame: .zero, style: .plain)
+    // MARK: - Expose to VC (ViewController sẽ gắn datasource/delegate)
+    let collectionView: UICollectionView          // Lưới lịch (7 cột x 5-6 hàng)
+    let tableView = UITableView(frame: .zero, style: .plain) // Danh sách giao dịch ngày
 
-    let prevButton = UIButton(type: .system)
-    let nextButton = UIButton(type: .system)
-    let monthLabel = UILabel()
+    let prevButton = UIButton(type: .system)      // Nút chuyển tháng về trước
+    let nextButton = UIButton(type: .system)      // Nút chuyển tháng về sau
+    let monthLabel = UILabel()                    // Nhãn hiển thị "MM/YYYY" (tap để mở date picker)
 
+    /// VC gọi để đổi tiêu đề tháng
     func setMonthTitle(_ text: String) { monthLabel.text = text }
+
+    /// VC gọi để cập nhật 3 ô tổng hợp
     func setSummary(income: String, expense: String, total: String) {
         incomeValue.text = income; expenseValue.text = expense; totalValue.text = total
     }
+
+    /// Header list (bên trái: "dd/MM (Thứ)", bên phải: "Tổng tiền của ngày")
     func setListHeader(left: String, right: String) {
         headerLeft.text = left; headerRight.text = right
+        // Phải set lại frame tableHeaderView để chiều cao cập nhật
         if let h = tableView.tableHeaderView {
             var f = h.frame; f.size.height = 40; h.frame = f
             tableView.tableHeaderView = h
         }
     }
 
-    // MARK: - Private UI
-    private let headerBar = UIStackView()
-    private let weekdaysStack = UIStackView()
+    // MARK: - Private UI thành phần
+    private let titleLabel = UILabel()            // Tiêu đề "Lịch"
+    private let weekdaysStack = UIStackView()     // Hàng hiển thị T.2..CN
+    private var monthWrap = UIView()              // Vùng chứa thanh tháng (để định vị weekdays bám theo)
 
+    // Nhóm 3 ô tổng hợp (Thu nhập / Chi tiêu / Tổng)
     private let incomeValue = UILabel()
     private let expenseValue = UILabel()
     private let totalValue = UILabel()
     private let summaryContainer = UIView()
 
+    // Header cho danh sách giao dịch ngày
     private let headerLeft = UILabel()
     private let headerRight = UILabel()
 
+    // Constraint động để điều chỉnh kích thước lưới lịch cho vừa 6 hàng, canh giữa
     private var calendarHeightC: NSLayoutConstraint?
+    private var calendarWidthC: NSLayoutConstraint?
 
     // MARK: - Init
+
     override init(frame: CGRect) {
+        // Chuẩn bị layout cho collectionView (ô vuông, không khoảng cách)
         let flow = UICollectionViewFlowLayout()
         flow.minimumInteritemSpacing = 0
         flow.minimumLineSpacing = 0
@@ -53,42 +69,36 @@ final class CalendarScreenInterface: UIView {
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    // MARK: - Build UI
+    // MARK: - Dựng UI chính
+
     private func buildUI() {
         backgroundColor = .systemGroupedBackground
-        setupHeader()
-        setupMonthBar()
-        setupWeekdays()
-        setupCalendar()
-        setupSummary()
-        setupList()
+        setupHeaderTitle()        // "Lịch"
+        setupMonthBar()           // thanh chuyển tháng + tiêu đề tháng
+        setupWeekdays()           // T.2..CN
+        setupCalendarCentered()   // lưới lịch – canh giữa màn hình
+        setupSummary()            // 3 ô tổng hợp dưới lịch
+        setupList()               // bảng danh sách giao dịch
     }
 
-    private func setupHeader() {
-        let title = UILabel()
-        title.text = "Lịch"
-        title.font = .systemFont(ofSize: 28, weight: .semibold)
+    /// Dòng chữ "Lịch" căn giữa theo màn hình
+    private func setupHeaderTitle() {
+        titleLabel.text = "Lịch"
+        titleLabel.font = .systemFont(ofSize: 28, weight: .semibold)
+        titleLabel.textAlignment = .center
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        let search = UIButton(type: .system)
-        search.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-
-        headerBar.axis = .horizontal
-        headerBar.alignment = .center
-        headerBar.addArrangedSubview(title)
-        headerBar.addArrangedSubview(UIView())
-        headerBar.addArrangedSubview(search)
-
-        addSubview(headerBar)
-        headerBar.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            headerBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-            headerBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            headerBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor) // căn giữa
         ])
     }
 
+    /// Thanh chứa nút trái/phải và label "MM/YYYY"
     private func setupMonthBar() {
         let wrap = UIView()
+        monthWrap = wrap
         wrap.backgroundColor = .secondarySystemBackground
         wrap.layer.cornerRadius = 12
 
@@ -100,7 +110,7 @@ final class CalendarScreenInterface: UIView {
         monthLabel.textAlignment = .center
         monthLabel.layer.cornerRadius = 10
         monthLabel.layer.masksToBounds = true
-        monthLabel.isUserInteractionEnabled = true
+        monthLabel.isUserInteractionEnabled = true   // để VC addGesture mở date picker
 
         let row = UIStackView(arrangedSubviews: [prevButton, monthLabel, nextButton])
         row.axis = .horizontal; row.alignment = .center; row.spacing = 12
@@ -109,7 +119,7 @@ final class CalendarScreenInterface: UIView {
         wrap.translatesAutoresizingMaskIntoConstraints = false
         row.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            wrap.topAnchor.constraint(equalTo: headerBar.bottomAnchor, constant: 12),
+            wrap.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             wrap.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             wrap.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
 
@@ -118,10 +128,13 @@ final class CalendarScreenInterface: UIView {
             row.topAnchor.constraint(equalTo: wrap.topAnchor, constant: 8),
             row.bottomAnchor.constraint(equalTo: wrap.bottomAnchor, constant: -8)
         ])
+
+        // Giữ nút không bị giãn
         prevButton.setContentHuggingPriority(.required, for: .horizontal)
         nextButton.setContentHuggingPriority(.required, for: .horizontal)
     }
 
+    /// Hàng thứ trong tuần (T.2..CN) – màu khác cho T.7 và CN
     private func setupWeekdays() {
         weekdaysStack.axis = .horizontal
         weekdaysStack.distribution = .fillEqually
@@ -135,14 +148,16 @@ final class CalendarScreenInterface: UIView {
         addSubview(weekdaysStack)
         weekdaysStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weekdaysStack.topAnchor.constraint(equalTo: monthLabel.superview!.superview!.bottomAnchor, constant: 8),
-            weekdaysStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            weekdaysStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            weekdaysStack.topAnchor.constraint(equalTo: monthWrap.bottomAnchor, constant: 8),
+            weekdaysStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            weekdaysStack.widthAnchor.constraint(equalTo: widthAnchor, constant: -24), // chừa 12pt mỗi bên
             weekdaysStack.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 
-    private func setupCalendar() {
+    /// Lưới lịch canh GIỮA màn, kích thước tính động theo bề rộng (ô vuông, 7 cột).
+    /// Chiều cao sẽ được set trong `updateCalendarHeight` để vừa 5–6 hàng (không thừa).
+    private func setupCalendarCentered() {
         collectionView.backgroundColor = .white
         collectionView.layer.cornerRadius = 8
         collectionView.layer.borderWidth = 1
@@ -152,18 +167,21 @@ final class CalendarScreenInterface: UIView {
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
-        // chỉ 1 constraint chiều cao, sẽ cập nhật bằng contentSize
+        // Tạo trước constraint width/height rồi giữ reference để cập nhật động.
+        calendarWidthC  = collectionView.widthAnchor.constraint(equalToConstant: 320)
         calendarHeightC = collectionView.heightAnchor.constraint(equalToConstant: 320)
+        calendarWidthC?.isActive = true
         calendarHeightC?.isActive = true
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: weekdaysStack.bottomAnchor, constant: 6),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12)
+            collectionView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 
+    /// Khối 3 ô tổng hợp dưới lịch (chia đều 3 cột)
     private func setupSummary() {
+        // Tạo 1 block (nhãn tiêu đề + giá trị)
         func makeBlock(_ title: String, _ value: UILabel, _ color: UIColor) -> UIStackView {
             let t = UILabel(); t.text = title; t.textColor = .secondaryLabel
             t.font = .systemFont(ofSize: 14, weight: .semibold)
@@ -178,8 +196,7 @@ final class CalendarScreenInterface: UIView {
         let s3 = makeBlock("Tổng",      totalValue,   .label)
 
         let row = UIStackView(arrangedSubviews: [s1, s2, s3])
-        row.axis = .horizontal; row.alignment = .center
-        row.distribution = .fillEqually
+        row.axis = .horizontal; row.alignment = .center; row.distribution = .fillEqually
 
         summaryContainer.backgroundColor = .white
         summaryContainer.layer.cornerRadius = 12
@@ -202,6 +219,7 @@ final class CalendarScreenInterface: UIView {
         ])
     }
 
+    /// Dựng bảng danh sách giao dịch + header (trái/phải)
     private func setupList() {
         headerLeft.font = .systemFont(ofSize: 15, weight: .semibold)
         headerRight.font = .systemFont(ofSize: 15, weight: .semibold)
@@ -238,35 +256,44 @@ final class CalendarScreenInterface: UIView {
         ])
     }
 
-    // MARK: - Layout helpers (FIX dư chiều cao)
-    /// Khóa lịch thành 6 hàng bằng cách set itemSize vuông, invalidate layout
-    /// và **đo chính xác** height từ `collectionViewContentSize.height`.
+    // MARK: - Layout helpers (tính kích thước lưới)
+
+    /// Tính lại kích thước lưới để luôn là 7 cột * N hàng, ô vuông, canh giữa,
+    /// và **không thừa** khoảng trắng ở dưới.
+    /// - Parameter rows: 6 (tháng có 6 hàng), 5 với một số tháng – nhưng ta đo theo contentSize để chính xác.
     func updateCalendarHeight(rows: Int) {
         guard let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         flow.minimumInteritemSpacing = 0
         flow.minimumLineSpacing = 0
         flow.sectionInset = .zero
 
-        // 1) Ô vuông theo bề rộng, làm tròn theo pixel
-        let width = collectionView.bounds.width
+        // Bề rộng có chừa tổng 24pt (12 mỗi bên) để ô không dính sát mép
+        let screenW = bounds.width
+        let safeHorizontalMargin: CGFloat = 24
+        let maxGridW = max(0, screenW - safeHorizontalMargin)
+
         let scale = UIScreen.main.scale
-        let rawItemW = width / 7.0
+        // Ô vuông = bề rộng chia 7, làm tròn theo pixel để nét
+        let rawItemW = maxGridW / 7.0
         let itemW = floor(rawItemW * scale) / scale
         let itemH = itemW
         flow.itemSize = CGSize(width: itemW, height: itemH)
 
-        // 2) Invalidate + layout để layout tính contentSize chính xác
+        // Cập nhật width thực của lưới để centerX
+        let gridW = itemW * 7.0
+        calendarWidthC?.constant = gridW
+
+        // Invalidate để collectionView tính lại contentSize -> chiều cao chính xác
         flow.invalidateLayout()
         collectionView.layoutIfNeeded()
         let contentH = flow.collectionViewContentSize.height
-
-        // 3) Khóa đúng bằng contentSize (làm tròn lên theo pixel)
         let finalH = ceil(contentH * scale) / scale
         calendarHeightC?.constant = finalH
 
         layoutIfNeeded()
     }
 
+    /// Mỗi lần layout lại (xoay máy/đổi kích thước), cập nhật kích cỡ lưới + header list
     override func layoutSubviews() {
         super.layoutSubviews()
         updateCalendarHeight(rows: 6)
@@ -279,12 +306,13 @@ final class CalendarScreenInterface: UIView {
 
 // MARK: - Cells
 
+/// Ô ngày trong lưới lịch: 1 nút hiển thị số ngày + 2 dòng mini cho thu/chi
 final class DayButtonCell: UICollectionViewCell {
     static let reuseID = "DayButtonCell"
 
-    let button = UIButton(type: .system)
-    private let miniIncome = UILabel()
-    private let miniExpense = UILabel()
+    let button = UIButton(type: .system) // tap để chọn ngày
+    private let miniIncome = UILabel()   // số thu nhỏ
+    private let miniExpense = UILabel()  // số chi nhỏ
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -304,6 +332,7 @@ final class DayButtonCell: UICollectionViewCell {
         miniExpense.textColor = .systemOrange
         miniExpense.textAlignment = .right
 
+        // Sắp xếp: [nút ngày] trên, [thu nhỏ], [chi nhỏ] dưới
         let v = UIStackView(arrangedSubviews: [button, miniIncome, miniExpense])
         v.axis = .vertical; v.spacing = 2
         contentView.addSubview(v)
@@ -317,12 +346,14 @@ final class DayButtonCell: UICollectionViewCell {
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
+    /// Đổi nền nhẹ khi đang chọn
     func applySelection(_ selected: Bool) {
         UIView.animate(withDuration: 0.15) {
             self.button.backgroundColor = selected ? UIColor.systemGray5 : .clear
         }
     }
 
+    /// Hiển thị mini thu/chi (ẩn nếu bằng 0 hoặc nil)
     func setMini(income: Int?, expense: Int?) {
         let nf = NumberFormatter(); nf.numberStyle = .decimal; nf.groupingSeparator = "."
         miniIncome.text  = (income ?? 0) > 0 ? nf.string(from: NSNumber(value: income!)) : ""
@@ -330,12 +361,13 @@ final class DayButtonCell: UICollectionViewCell {
     }
 }
 
+/// Cell danh sách giao dịch: icon + tên danh mục + số tiền
 final class EntryCell: UITableViewCell {
     static let reuseID = "EntryCell"
 
-    private let icon = UIImageView()
-    private let titleLb = UILabel()
-    private let amountLb = UILabel()
+    private let icon = UIImageView()     // SFSymbol theo danh mục
+    private let titleLb = UILabel()      // Tên danh mục / ghi chú
+    private let amountLb = UILabel()     // Số tiền (xanh nếu thu)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -365,6 +397,7 @@ final class EntryCell: UITableViewCell {
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
+    /// Cấu hình hiển thị một giao dịch
     func configure(iconName: String, iconColor: UIColor, title: String, amount: String, amountColor: UIColor) {
         icon.image = UIImage(systemName: iconName)
         icon.tintColor = iconColor
