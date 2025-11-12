@@ -42,6 +42,17 @@ class CreateSpendingViewController: UIViewController, UICollectionViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
+        
+        let db = AppDatabase.shared
+                db.insertSampleTransactions()
+                let trans = db.getAllTransactions()
+                //Test
+                for t in trans{
+                    print(t.date)
+                }
         setupCollectionViews()
         loadCategories()
         updateView(for: segmented.selectedSegmentIndex)
