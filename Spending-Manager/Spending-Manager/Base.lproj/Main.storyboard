@@ -1035,7 +1035,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left" catalog="system" width="32" height="32"/>
+        <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="cart" width="256" height="252"/>
